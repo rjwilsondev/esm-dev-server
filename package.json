@@ -1,0 +1,23 @@
+{
+  "name": "esm-dev-server",
+  "type": "module",
+  "version": "0.0.0-alpha",
+  "description": "Making a rip off of the Vite dev server for learning purposes.",
+  "license": "GNU GPLv3",
+  "author": "Ryan Wilson",
+  "main": "./src/server.ts",
+  "bin": {
+    "my-vite": "./src/server.ts"
+  },
+  "scripts": {
+    "dev": "node ./src/server.ts --port=12345 playground"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "es-module-lexer": "^2.0.0",
+    "esbuild": "^0.28.0",
+    "lodash-es": "^4.18.1",
+    "magic-string": "^0.30.21",
+    "typescript": "^6.0.3"
+  }
+}

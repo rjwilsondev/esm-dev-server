@@ -1,0 +1,12 @@
+.DS_Store
+
+# Dependencies
+node_modules/
+
+*.log
+
+notes
+
+# Environment variables
+.env*
+!.env.example
