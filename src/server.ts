@@ -13,7 +13,7 @@ const version = "0.0.0"
 const MIME_TYPES: Record<string, string | undefined> = {
     '.html': 'text/html',
     '.js': 'text/javascript',
-    '.css': 'text/css',
+    '.css': 'text/javascript',
     '.json': 'application/json',
     '.png': 'image/png',
     '.jpg': 'image/jpeg',
@@ -36,6 +36,14 @@ const server = http.createServer(async (req, res) => {
         let content = await readFile(filePath, "utf-8");
         if (ext === ".js" || ext === ".ts") {
             content = await transformImports(content, filePath)
+        }
+
+        if (ext === ".css") {
+            content = `
+            const style = document.createElement('style');
+            style.textContent = ${JSON.stringify(content)};
+            document.head.appendChild(style);
+            `
         }
 
         res.writeHead(200, { 'Content-Type': contentType });
